@@ -19,6 +19,7 @@
 \setlength{\parskip}{0.55\baselineskip}
 \setlength{\tabcolsep}{3pt}
 \setlength{\emergencystretch}{1.5em}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \title{Cross-Layer Alignment in the Human-Agent Enterprise}
 \author{James Booth}
@@ -43,7 +44,7 @@ The paper is a structured interdisciplinary conceptual synthesis and perspective
 The paper makes five contributions:
 
 \begin{enumerate}
-\item It frames cross-layer alignment as a distinct organizational design problem while explicitly crediting Agentic BPM, DEMO, semantic BPM, Human--AI Teaming, and Digital Twin research for important partial combinations.
+\item It develops a cross-layer framing for an organizational design problem while explicitly crediting Agentic BPM, DEMO, semantic BPM, Human--AI Teaming, and Digital Twin research for important partial combinations.
 \item It provides a vocabulary that keeps semantic foundation, actor topology, process representation, strategic intent and architecture, and governance constraints analytically distinct.
 \item It identifies recurring cross-layer mismatch patterns and explains how prescribed, observed, authorized, and effective representations can diverge.
 \item It organizes each dimension around working definitions, relevant representations, evidence sources, possible misalignment, consequences, and confounders.
@@ -56,7 +57,7 @@ The synthesis was designed to challenge, refine, and situate a cross-layer align
 
 Search terms combined variants of "human-agent enterprise," "cross-layer alignment," "organizational alignment," "semantic interoperability," "actor topology," "human-AI teaming," "delegation," "autonomy boundaries," "process mining," "Agentic BPM," "organizational mining," "agent identity," "authorization," "enterprise architecture," and "digital twin of organization." Inclusion favored sources that defined relevant constructs, supplied a process or organizational representation, reported empirical observations, described governance mechanisms, or provided a useful conceptual bridge. Exclusion favored duplicate versions, sources without recoverable metadata, purely promotional material, and work whose relation to enterprise action could not be established.
 
-The corpus intentionally combines foundational books and papers, standards, peer-reviewed journal and conference work, practitioner and governance documents, and recent preprints. Foundational sources establish vocabulary or representational traditions; recent sources expose current Agentic BPM, teaming, governance, and organizational-mining developments. Practitioner documents and standards are used for design context rather than counted as causal evidence. Citation chaining was used to locate adjacent work and challenge the initial novelty claim. The resulting synthesis is purposive and auditable, not exhaustive.
+The corpus intentionally combines foundational books and papers, standards, peer-reviewed journal and conference work, practitioner and governance documents, and recent preprints. Foundational sources establish vocabulary or representational traditions; recent sources expose current Agentic BPM, teaming, governance, and organizational-mining developments. Practitioner documents and standards are used for design context rather than counted as causal evidence. Citation chaining was used to locate adjacent work and test the initial framing against related perspectives. The resulting synthesis is purposive and auditable, not exhaustive.
 
 \subsection{Evidence categories and auditability}
 Evidence labels in this paper are descriptive synthesis labels, not confidence levels, systematic-review grades, or meta-analytic estimates. "Strong direct" indicates that a source studies a closely matching construct and outcome in a relevant setting. "Emerging direct" indicates a close but early or bounded study. "Strong adjacent" indicates a well-supported neighboring mechanism. "Conceptual / speculative" indicates a reasoned integration or research proposition that still requires direct testing. These labels communicate what kind of support a claim has; they do not assign numeric certainty.
@@ -109,7 +110,7 @@ Mixed-initiative work treats initiative as bi-directional and adaptive, with cap
 \subsection{Multi-agent systems, process mining, and Agentic BPM}
 Process mining supplies an observable substrate for comparing prescribed and enacted work. Agent Miner discovers agent interaction models from event data and reports evaluation on public industrial datasets \parencite{tour2023agentminer}. Organizational mining extends this direction with agent types and interactions evaluated through precision, recall, simplicity, and modularity \parencite{orgmining2026}. Process records have also been used to generate project-specific AI-agent roles in bounded software-engineering settings, with functional tests and exploratory user evidence \parencite{bala2026agents}. These methods make observed topology and process variation more inspectable; they do not by themselves establish authorized topology, semantic agreement, or strategic alignment.
 
-Agentic BPM is the closest adjacent stream. The 2023 ABPMS manifesto frames sensing, reasoning, acting, explaining, adapting, and improving within process-aware systems \parencite{dumas2023abpms}. Later work makes goals and normative frames first-class, proposes Agentic BPMS architectures, develops formal foundations, and articulates a broader research manifesto \parencite{calvanese2025normative,dumas2026abpms,degiacomo2026formal,calvanese2026manifesto}. This work already combines important elements that an earlier version of the present paper treated too narrowly. The remaining question is how to compare the consistency of semantic, topological, process, strategic, and governance representations across those systems, and how to test whether such comparison is useful.
+Agentic BPM is the closest adjacent stream. The 2023 ABPMS manifesto frames sensing, reasoning, acting, explaining, adapting, and improving within process-aware systems \parencite{dumas2023abpms}. Later work makes goals and normative frames first-class, proposes Agentic BPMS architectures, develops formal foundations, and articulates a broader research manifesto \parencite{calvanese2025normative,dumas2026abpms,degiacomo2026formal,calvanese2026manifesto}. These streams already combine important elements. Building from that work, this paper asks how to compare the consistency of semantic, topological, process, strategic, and governance representations across those systems, and how to test whether such comparison is useful.
 
 \subsection{Governance, authorization, and bounded autonomy}
 Governance work emphasizes layered controls, human oversight, monitoring, attribution, escalation, and interruption \parencite{shavit2023governance,schmitz2025oversight}. Recent autonomy-level proposals distinguish what an agent can technically do from what it is permitted to do \parencite{zheng2026permission}. NIST's agent identity and authorization work similarly treats verifiable identity, authorization, and lifecycle controls as foundational to trustworthy deployment \parencite{nist2026identity}. These sources support governance as a cross-cutting constraint plane. They do not imply that a governance record is complete, current, or aligned with process practice, organizational responsibility, or strategic intent.
@@ -152,10 +153,12 @@ gov/.style={draw, dashed, rounded corners, inner sep=7pt}
 \end{figure}
 
 \section{The Remaining Alignment Gap}
-\subsection{Novelty claim}
-The defensible novelty claim is deliberately narrower than a claim of first combination. Existing work already contains many pairwise and some multi-layer combinations: ontology with process, team structure with trust, event data with agent discovery, goals with normative frames, and architecture with organizational ownership. What remains comparatively under-specified is a reusable cross-layer alignment problem that asks whether the representations used for a bounded delegated action agree, conflict, or remain unknown across semantic, structural, process, strategic, and governance concerns.
+\subsection{Positioning the Alignment Problem}
+The surrounding literatures already offer several ways to connect these concerns: ontology with process, team structure with trust, event data with agent discovery, goals with normative frames, and architecture with organizational ownership. This paper takes those connections as its starting point and examines a practical question. When a bounded action is delegated, do the semantic, structural, process, strategic, and governance representations that bear on it point in the same direction, conflict, or leave the matter unresolved?
 
-The gap is therefore relational and diagnostic. It concerns how an organization can identify disagreement between authorized and observed topology, process and governance, semantic and structural representations, architecture and organizational ownership, or strategic intent and granted autonomy. The framework does not require a single enterprise model. It requires enough linkage and provenance to state which representations were compared, what evidence supports the comparison, and what remains unobserved.
+The value of this framing is in making the comparison explicit and diagnosable. It provides a common vocabulary for examining where disagreement occurs, what evidence supports the comparison, and which conclusions should remain unknown. It is intended as an analysis of a problem that appears across these literatures, not as a claim that any one field lacks the relevant ideas or that this framing supersedes existing approaches.
+
+The problem is therefore relational and diagnostic. It concerns how an organization can identify disagreement between authorized and observed topology, process and governance, semantic and structural representations, architecture and organizational ownership, or strategic intent and granted autonomy. The framework does not require a single enterprise model. It requires enough linkage and provenance to state which representations were compared, what evidence supports the comparison, and what remains unobserved.
 
 \subsection{Necessary, supportive, and sufficient conditions}
 Cross-layer alignment may be a supportive condition for reliable delegation in some settings, but it is not presented as sufficient for safety, security, legal compliance, or business performance. An aligned set of representations can still be wrong, stale, manipulated, poorly instrumented, or embedded in a faulty runtime. Conversely, a local task may be useful with shallow context when it is reversible, low impact, stable, and well bounded.
@@ -234,14 +237,18 @@ The framework is a comparison protocol, not a prescribed data architecture. A re
 \section{Cross-Layer Mismatch and Failure Modes}
 The operational center of the framework is not ''what is the score?'' but ''where do representations disagree, and what evidence supports that conclusion?'' A cross-layer mismatch is a context-specific divergence among representations relevant to the same bounded action. A divergence can be intentional, temporary, adaptive, benign, or harmful. It becomes an alignment concern when the task, authority, risk, and evidence indicate that the divergence can create an unacceptable responsibility, process, semantic, strategic, or governance problem. If evidence is insufficient, the correct classification is unknown rather than misaligned.
 
-\begin{longtable}{p{0.16\textwidth} p{0.19\textwidth} p{0.28\textwidth} p{0.29\textwidth}}
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{P{0.15\textwidth} P{0.18\textwidth} P{0.27\textwidth} P{0.30\textwidth}}
 \caption{Mismatch patterns for empirical observation and case analysis.}\label{tab:mismatches}\\
 \toprule
-Mismatch & Compared representations & Example disagreement & Possible evidence, consequence, or caveat \\
+\textbf{Mismatch} & \textbf{Compared representations} & \textbf{Example disagreement} & \textbf{Evidence, consequence, or caveat} \\
 \midrule
 \endfirsthead
 \toprule
-Mismatch & Compared representations & Example disagreement & Possible evidence, consequence, or caveat \\
+\textbf{Mismatch} & \textbf{Compared representations} & \textbf{Example disagreement} & \textbf{Evidence, consequence, or caveat} \\
 \midrule
 \endhead
 Semantic--process & Semantic foundation and process representation & A ''resolved'' case has different meanings in the domain vocabulary and process state model. & Compare mappings, definitions, provenance, and state transitions. Consequences may include wrong routing or invalid completion. A vocabulary difference may be a deliberate local variant; stale definitions create unknown evidence until checked. \\
@@ -257,6 +264,7 @@ Architecture--organizational ownership & Enterprise architecture and organizatio
 Strategic intent--granted autonomy & Strategic intent and granted autonomy & An agent receives broad write authority for a task whose stated risk posture requires human approval and reversibility. & Compare autonomy decisions, permissions, risk appetite, approval gates, and revocation tests. Consequences may include inappropriate exposure. Technical capability is not evidence of strategic authorization. \\
 \bottomrule
 \end{longtable}
+\endgroup
 
 The table is a diagnostic catalog, not a prevalence claim. The same difference can receive different classifications in different contexts. A defensible analysis records task scope, representation versions, evidence provenance, affected boundaries, and unresolved alternatives.
 
@@ -351,7 +359,7 @@ The framework is less necessary as a broad organizational representation for nar
 The synthesis is limited by its purposive literature scope, qualitative mappings, manually audited bibliography, and absence of primary field data. It does not offer a production architecture, compliance certification, causal effect estimate, universal autonomy threshold, or claim that all organizational knowledge can be represented. It does not treat missing explicit representation as automatic misalignment and does not resolve how tacit knowledge should be elicited without surveillance, excessive bureaucracy, or a false impression of completeness.
 
 \section{Conclusion}
-Agentic BPM, Human--AI Teaming, semantic BPM, process mining, enterprise architecture, governance, and DTO research already provide substantial pieces of the human-agent enterprise problem. The defensible remaining contribution is narrower: make cross-layer alignment---the evidence-supported correspondence among meaning, actors, process, intent, and governance---an explicit object for conceptual comparison and empirical study.
+Agentic BPM, Human--AI Teaming, semantic BPM, process mining, enterprise architecture, governance, and DTO research already provide substantial pieces of the human-agent enterprise problem. This paper brings those pieces into a cross-layer framing in which alignment means evidence-supported correspondence among meaning, actors, process, intent, and governance. The goal is to provide a practical basis for conceptual comparison and empirical study.
 
 The framework's practical center is mismatch diagnosis. It asks where prescribed, observed, authorized, and effective representations agree, conflict, or remain unknown, and it treats governance as a constraint plane across semantic, structural, process, and strategic concerns. The resulting research agenda is deliberately open about operationalization: construct usefulness, inter-rater reliability, observable indicators, outcome association, interaction, and boundary conditions must be tested in bounded settings. The repository's experimental catalog illustrates the vocabulary; it does not validate a score or model.
 
