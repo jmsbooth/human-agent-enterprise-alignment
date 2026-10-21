@@ -38,9 +38,9 @@ The old scalar alignment implementation was removed because its filename, equati
 Requirements:
 
 - Python 3.8 or newer
-- Tectonic, or another compatible LaTeX engine exposed through the TECTONIC Make variable
+- A standard LaTeX installation with `pdflatex`, the packages declared in `paper/main.tex`, and scalable Computer Modern fonts (for TeX Live on Debian/Ubuntu: `texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-pictures`, and `cm-super`; or a compatible engine set via `LATEX_ENGINE`)
 
-The Makefile points at the bundled Tectonic runtime available in this workspace; override TECTONIC when running elsewhere.
+The Makefile uses `pdflatex` on PATH by default, with two passes for references; override `LATEX_ENGINE` for a compatible engine. There are no machine-specific filesystem paths.
 
 Run the checks and export the qualitative catalog:
 
