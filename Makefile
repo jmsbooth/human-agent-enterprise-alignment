@@ -1,7 +1,6 @@
 PYTHON ?= python3
-# The bundled runtime is used in this workspace; override TECTONIC for a
-# different installation or CI runner.
-TECTONIC ?= /Users/jamesbooth/.codex/plugins/cache/openai-bundled/latex/0.2.6/bin/tectonic
+# Use a portable installed TeX engine; override LATEX_ENGINE if needed.
+LATEX_ENGINE ?= pdflatex
 BUILD_DIR ?= build
 EXPERIMENT_OUTPUT ?= $(BUILD_DIR)/mismatch-exploration.json
 
@@ -18,6 +17,7 @@ check: test experiment
 
 paper:
 	mkdir -p $(BUILD_DIR)/paper
-	$(TECTONIC) -X compile --outdir $(BUILD_DIR)/paper --keep-logs paper/main.tex
+	$(LATEX_ENGINE) -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=$(BUILD_DIR)/paper paper/main.tex
+	$(LATEX_ENGINE) -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=$(BUILD_DIR)/paper paper/main.tex
 
 all: check paper
