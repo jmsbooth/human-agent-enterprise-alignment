@@ -38,7 +38,7 @@ The old scalar alignment implementation was removed because its filename, equati
 Requirements:
 
 - Python 3.8 or newer
-- A standard LaTeX installation with `pdflatex` and the packages declared in `paper/main.tex` (or a compatible engine set via `LATEX_ENGINE`)
+- A standard LaTeX installation with `pdflatex`, the packages declared in `paper/main.tex`, and scalable Computer Modern fonts (for TeX Live on Debian/Ubuntu: `texlive-latex-base`, `texlive-latex-recommended`, `texlive-latex-extra`, `texlive-pictures`, and `cm-super`; or a compatible engine set via `LATEX_ENGINE`)
 
 The Makefile uses `pdflatex` on PATH by default, with two passes for references; override `LATEX_ENGINE` for a compatible engine. There are no machine-specific filesystem paths.
 
