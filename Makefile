@@ -13,7 +13,11 @@ experiment:
 	mkdir -p $(BUILD_DIR)
 	$(PYTHON) -m experimental.mismatch_exploration --output $(EXPERIMENT_OUTPUT)
 
-check: test experiment
+check: manuscript test experiment
+
+.PHONY: manuscript
+manuscript:
+	$(PYTHON) scripts/check_manuscript.py
 
 paper:
 	mkdir -p $(BUILD_DIR)/paper
