@@ -1,5 +1,7 @@
 # Cross-Layer Alignment in the Human-Agent Enterprise
 
+**[Read the full paper (PDF)](paper/cross-layer-alignment.pdf)** | [Download PDF](https://raw.githubusercontent.com/jmsbooth/human-agent-enterprise-alignment/main/paper/cross-layer-alignment.pdf) | [LaTeX source](paper/main.tex)
+
 This repository accompanies a conceptual synthesis and perspective paper on how enterprise meaning, actor responsibility, process behavior, strategic intent, architecture, and governance constraints interact around delegated agent actions.
 
 > Status: structured interdisciplinary conceptual synthesis with exploratory mismatch tooling. This repository does not present a validated mathematical model, universal alignment score, synthetic research result, or production safety assessment.
@@ -25,11 +27,12 @@ Governance is treated as a cross-cutting constraint plane covering identity, per
 
 | Path | Purpose |
 | --- | --- |
+| paper/cross-layer-alignment.pdf | The published, reader-ready PDF of the manuscript (21 pages). |
 | paper/main.tex | The manuscript, including the synthesis method, related work, framework, mismatch catalog, propositions, optional DTO substrate, and research agenda. |
 | experimental/mismatch_exploration.py | Standard-library exploratory catalog of cross-layer mismatch cases. It is not a validator, score, statistical model, or source of empirical evidence. |
 | tests/test_mismatch_exploration.py | Regression tests for catalog coverage, status distinctions, validation, filtering, and JSON serialization. |
 | research/revision-evidence.md | Internal evidence, novelty, construct, proposition, and citation audit supporting the revision. |
-| Makefile | Reproducible checks, exploratory export, and Tectonic compilation targets. |
+| Makefile | Reproducible checks, exploratory export, portable LaTeX compilation, and PDF publication target. |
 
 The old scalar alignment implementation was removed because its filename, equations, and synthetic outputs conflicted with the revised paper's conceptual scope. The experimental directory is the canonical location for the retained tooling because it makes the non-validating status explicit. A future empirical package should be introduced only after real, versioned, de-identified evidence and a preregistered study design exist.
 
@@ -54,7 +57,15 @@ Compile the paper:
 make paper
 ~~~
 
-The PDF is written to build/paper/main.pdf. The exploratory JSON export is written to build/mismatch-exploration.json.
+The build output is written to `build/paper/main.pdf`. The version for readers is checked into [`paper/cross-layer-alignment.pdf`](paper/cross-layer-alignment.pdf). The exploratory JSON export is written to `build/mismatch-exploration.json`.
+
+To refresh the committed PDF after manuscript edits, install Ghostscript (`gs`) and run:
+
+~~~sh
+make publish-pdf
+~~~
+
+This target compiles the source and writes an optimized, vector-based PDF to `paper/cross-layer-alignment.pdf`. Commit the updated PDF together with any manuscript changes.
 
 To run the catalog directly:
 
@@ -130,6 +141,6 @@ The next stage is empirical, not another score revision:
 
 ## Showcase artifacts
 
-Build the paper and open the generated PDF from build/paper/main.pdf. The manuscript is designed to stand on its own as the showcase artifact; the Python module exists only to make the mismatch vocabulary inspectable and testable as repository scaffolding.
+Open the [reader-ready paper (PDF)](paper/cross-layer-alignment.pdf), or build an updated copy from the LaTeX source. The manuscript is designed to stand on its own as the showcase artifact; the Python module exists only to make the mismatch vocabulary inspectable and testable as repository scaffolding.
 
 For the internal revision record, see research/revision-evidence.md.

@@ -3,8 +3,10 @@ PYTHON ?= python3
 LATEX_ENGINE ?= pdflatex
 BUILD_DIR ?= build
 EXPERIMENT_OUTPUT ?= $(BUILD_DIR)/mismatch-exploration.json
+GHOSTSCRIPT ?= gs
+PUBLISHED_PDF ?= paper/cross-layer-alignment.pdf
 
-.PHONY: check test experiment paper all
+.PHONY: check test experiment paper all publish-pdf
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v
@@ -23,5 +25,8 @@ paper:
 	mkdir -p $(BUILD_DIR)/paper
 	$(LATEX_ENGINE) -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=$(BUILD_DIR)/paper paper/main.tex
 	$(LATEX_ENGINE) -interaction=nonstopmode -halt-on-error -file-line-error -output-directory=$(BUILD_DIR)/paper paper/main.tex
+
+publish-pdf: paper
+	$(GHOSTSCRIPT) -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -dCompatibilityLevel=1.7 -dPDFSETTINGS=/prepress -sOutputFile=$(PUBLISHED_PDF) $(BUILD_DIR)/paper/main.pdf
 
 all: check paper
