@@ -12,8 +12,8 @@
 \usepackage[nameinlink,noabbrev]{cleveref}
 \usepackage[numbers,sort&compress]{natbib}
 
-% Keep the manuscript buildable with the bundled Tectonic runtime. A future
-% venue-specific build may replace this with BibLaTeX/Biber.
+% Keep the manuscript buildable with a portable pdflatex toolchain.
+% A venue-specific build may replace this lightweight natbib bibliography.
 \newcommand{\parencite}[1]{\citep{#1}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.55\baselineskip}
@@ -423,6 +423,36 @@ Governance & Identity, permission, prohibition, obligation, approval, monitoring
 \end{longtable}
 \endgroup
 
+\subsection{An action-centered evidence contract}
+Telemetry becomes useful for cross-layer analysis only when the same bounded activity can be traced through its organizational context and resulting effect. An implementation need not persist every retrieved document or model prompt. It should be able to preserve a protected, correlatable evidence record sufficient to reconstruct which facts, identities, policies, and resource states were considered. W3C PROV-O supplies a conceptual vocabulary for derivation and responsibility; emerging OpenTelemetry agent and workflow spans describe runtime operations but should not be treated as a complete governance schema \parencite{w3c2013prov,otel2026agent}.
+
+\begin{longtable}{P{0.23\textwidth} P{0.38\textwidth} P{0.27\textwidth}}
+\caption{Candidate evidence fields for bounded delegated action; an illustrative contract, not a proposed universal schema.}\label{tab:action-evidence}\\
+\toprule
+Evidence category & Minimum question the record should support & Collection and interpretation boundary \\
+\midrule
+\endfirsthead
+\toprule
+Evidence category & Minimum question the record should support & Collection and interpretation boundary \\
+\midrule
+\endhead
+Task and purpose & Which case and objective initiated the request; what effect was sought? & Limit business-context exposure and keep identifying data protected. \\
+Actor and chain & Which human, service, agent instance, and delegation ancestry were involved? & Avoid shared identities; validate source of identity assertions. \\
+Action target & Which resource, operation, recipient, and intended result were in scope? & A proposed operation may differ from the executed one. \\
+Context and versions & Which organizational facts, process state, classifications, and policy versions were applicable? & Reference authoritative snapshots; record effective time and freshness. \\
+Decision and obligation & What PDP disposition, reasons, obligations, expiration, and exception path applied? & Policy evaluation is not proof of correct business outcome. \\
+Execution and transfer & Did the PEP allow or block an effect, and to whom was data transferred? & Enforcement and downstream release require separate coverage. \\
+Outcome and change & What effect was observed, what changed subsequently, and was revocation applied? & Correlation alone does not establish cause or absence of leakage. \\
+\bottomrule
+\end{longtable}
+
+Evidence quality is a property of the resulting trace, not a multiplier on alignment. If an identity assertion is unverified, a policy version cannot be determined, a child-agent edge is missing, or a source classification is ambiguous, the correct result is an explicit evidence gap. Sensitive raw content should not be copied into general-purpose telemetry merely to obtain trace completeness. Data minimization, tamper evidence, access control, retention, and compartmented investigation are first-class design constraints. A partial distributed evidence graph can be more defensible than a supposedly complete centralized twin.
+
+\subsection{Decision freshness and feedback}
+A context change may arrive as a new process event, revised policy, identity revocation, incident signal, amended data label, or updated service ownership. The system needs a stated way to invalidate affected decisions or re-evaluate a later action using current authoritative inputs. That may involve event subscriptions, locally checked short-lived grants, or synchronous PDP calls for high-impact effects. Eventual consistency creates a period in which two enforcement points can see different context; the residual exposure needs to be measured and accepted by the relevant governance authority rather than concealed by a generic assertion of continuous authorization.
+
+This is also a business feedback loop. A legitimate request that is repeatedly blocked due to stale mappings, missing approvals, or excessive revalidation reveals design debt and economic costs. Operational review should distinguish a prevented unauthorized operation, a false denial, an unnecessary escalation, and a successful outcome. These distinctions allow the value of cross-layer context to be tested against simpler controls without relying on a universal numeric alignment index.
+
 \subsection{DTO as an optional evidence substrate}
 A DTO-like substrate can link partial, versioned, observable representations of an organization. One implementation might connect semantic entities and provenance; actor identities, roles, responsibilities, authority, interfaces, and boundaries; prescribed process models and observed event traces; objectives, capabilities, architecture dependencies, owners, and risk relations; and agent traces that connect actions to tools, process steps, data sources, approvals, policy decisions, and outcomes.
 
@@ -449,6 +479,11 @@ Sample reversible low-risk tasks, regulated high-impact work, exception-rich cas
 \subsection{DTO and replication}
 Begin with bounded processes and de-identified, versioned evidence. Share schemas, representation mappings, case-selection rules, classification protocols, and analysis code where lawful. Replicate across claims, customer support, compliance triage, and incident response without treating those use cases as interchangeable. A DTO implementation should follow evidence and privacy requirements rather than be assumed as a prerequisite.
 
+\subsection{Machine-speed change, delegated depth, and scale}
+Future evaluation should explicitly vary the rate of context changes relative to agent action rates, including bursts of revocation, reassignment, and adversarial policy or identity events. Compare stale-permit windows, denied legitimate work, context-recovery latency, policy-decision latency, revocation propagation, and eventual convergence. Distinguish low-risk reads from costly external effects. Compare one-level and multi-level delegation, branching and shared-subagent topologies, partial loss of parent authority, and aggregation of separately permitted data.
+
+Claims of large-scale applicability require stated workloads and measured resource consumption. A useful experimental sequence might progress from a small controlled test to thousands and then tens or hundreds of thousands of simulated concurrent agent instances, if feasible. Report agents, tasks, policy decisions, resources, and events separately; agent count alone is not throughput. Evaluate central versus distributed policy decision points, caching and invalidation policies, partition recovery, event sampling, tenant separation, and degraded connectivity. This paper supplies the questions and design pressures, not empirical results or an unbounded scalability guarantee.
+
 \section{Threats to Validity}
 Construct validity is threatened by treating labels such as agent, role, process, or alignment as interchangeable across literatures. The definitions in this paper reduce that risk but do not establish community-wide agreement. Content validity is threatened by omitting relevant work from a focused search. The method records search terms, source classes, inclusion rules, chaining, and gaps, but it is not exhaustive.
 
@@ -463,12 +498,12 @@ The framework is more applicable when work is cross-functional, regulated, high-
 \subsection{Lower applicability}
 The framework is less necessary as a broad organizational representation for narrow, low-risk, reversible, well-instrumented actions with stable semantics, local authority, and little exception variation. A simple agent that classifies a bounded input or retrieves a document may need only a small semantic and permission contract.
 
-The synthesis is limited by its purposive literature scope, qualitative mappings, manually audited bibliography, and absence of primary field data. It does not offer a production architecture, compliance certification, causal effect estimate, universal autonomy threshold, or claim that all organizational knowledge can be represented. It does not treat missing explicit representation as automatic misalignment and does not resolve how tacit knowledge should be elicited without surveillance, excessive bureaucracy, or a false impression of completeness.
+The synthesis is limited by its purposive literature scope, qualitative mappings, manually audited bibliography, and absence of primary field data. It does not offer a production architecture, compliance certification, causal effect estimate, universal autonomy threshold, or claim that all organizational knowledge can be represented. Machine-speed adversarial change and very large agent populations are forward-looking scenarios, not measured deployment prevalence. Proposed evidence contracts, revocation behavior, and hierarchical delegation illustrate architectural questions, not verified protocol properties. The paper does not treat missing explicit representation as automatic misalignment or resolve how tacit knowledge should be elicited without surveillance, excessive bureaucracy, or false completeness.
 
 \section{Conclusion}
 Agentic BPM, Human--AI Teaming, semantic BPM, process mining, enterprise architecture, governance, and DTO research already provide substantial pieces of the human-agent enterprise problem. This paper brings those pieces into a cross-layer framing in which alignment means evidence-supported correspondence among meaning, actors, process, intent, and governance. The goal is to provide a practical basis for conceptual comparison and empirical study.
 
-The framework's practical center is mismatch diagnosis. It asks where prescribed, observed, authorized, and effective representations agree, conflict, or remain unknown, and it treats governance as a constraint plane across semantic, structural, process, and strategic concerns. The resulting research agenda is deliberately open about operationalization: construct usefulness, inter-rater reliability, observable indicators, outcome association, interaction, and boundary conditions must be tested in bounded settings. The repository's experimental catalog illustrates the vocabulary; it does not validate a score or model.
+The framework's practical center is the relationship between applicable organizational evidence and delegated action. Prescribed, observed, authorized, and effective representations may agree, conflict, or remain unknown; governance constrains the use of all four dimensions. Machine-speed context changes, multi-hop ephemeral delegation, and data derivation make that relation operationally important, while distributed evidence and independent enforcement create additional cost and consistency questions. The proposed scenarios and evidence contract illustrate how enterprise architects can study that relation without assuming a complete digital twin or an always-current graph. Whether such connections improve business outcomes, security, or appropriate autonomy beyond simpler local controls remains a question for comparative evaluation. The repository's experimental catalog illustrates the vocabulary; it validates neither a score nor a security protocol.
 
 \begin{thebibliography}{99}
 \bibitem{gruber1993translation} Gruber, T. R. (1993). A translation approach to portable ontology specifications. \emph{Knowledge Acquisition}, 5(2), 199--220. \url{https://doi.org/10.1006/knac.1993.1008}.
