@@ -1,10 +1,18 @@
 # Cross-Layer Alignment in the Human-Agent Enterprise
 
-**[Read the full paper (PDF)](paper/cross-layer-alignment.pdf)** | [Download PDF](https://raw.githubusercontent.com/jmsbooth/human-agent-enterprise-alignment/main/paper/cross-layer-alignment.pdf) | [LaTeX source](paper/main.tex)
+**[Read the full paper (PDF)](paper/cross-layer-alignment.pdf)** | [Download PDF](paper/cross-layer-alignment.pdf?raw=1) | [LaTeX source](paper/main.tex)
 
 This repository accompanies a conceptual synthesis and perspective paper on how enterprise meaning, actor responsibility, process behavior, strategic intent, architecture, and governance constraints interact around delegated agent actions.
 
 > Status: structured interdisciplinary conceptual synthesis with exploratory mismatch tooling. This repository does not present a validated mathematical model, universal alignment score, synthetic research result, or production safety assessment.
+
+## Current manuscript and follow-on research
+
+The October 2026 manuscript revision extends the original conceptual framework with runtime applicability, authoritative context freshness, Zero Trust enforcement boundaries, hierarchical delegation and data-derivation concerns. It treats dynamic agent populations and machine-speed adversarial change as design and research scenarios, not demonstrated performance claims.
+
+**Paper 1 research plan:** [Enterprise-Contextual Zero Trust for Dynamic Agent Systems](research/paper-1-execution-spec.md). This separate technical study will investigate multi-level task-scoped grants, revocation under rapid contextual change, information-transfer controls, and reproducible security and scalability evaluation. No Paper 1 implementation results are claimed in Paper 0.
+
+**Finalization state:** Paper 0 is a revised manuscript for author review; its intellectual claims remain conceptual. See [finalization acceptance and open checks](research/paper-0-finalization.md).
 
 ## Research position
 
