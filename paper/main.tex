@@ -165,30 +165,79 @@ gov/.style={draw, dashed, rounded corners, inner sep=7pt}
 \end{figure}
 
 \section{The Remaining Alignment Gap}
-\subsection{Positioning the Alignment Problem}
-The surrounding literatures already offer several ways to connect these concerns: ontology with process, team structure with trust, event data with agent discovery, goals with normative frames, and architecture with organizational ownership. This paper takes those connections as its starting point and examines a practical question. When a bounded action is delegated, do the semantic, structural, process, strategic, and governance representations that bear on it point in the same direction, conflict, or leave the matter unresolved?
+\subsection{From representational agreement to runtime applicability}
+The closest literatures already connect ontologies and workflows, goals and normative frames, actor relationships and trust, and agent proposals with external authorization \parencite{calvanese2026manifesto,jorgensen2026governing}. The unresolved issue examined here is not whether each of these mechanisms ought to exist. It is how an enterprise determines which versions and relationships actually govern a particular action performed by an agent at a particular time. An entity may be correctly resolved while its data-use restrictions remain unknown. A credential may be valid while its delegated scope no longer matches a case assignment. A process transition may be syntactically permitted while the underlying business objective or accountable owner has changed.
 
-The value of this framing is in making the comparison explicit and diagnosable. It provides a common vocabulary for examining where disagreement occurs, what evidence supports the comparison, and which conclusions should remain unknown. It is intended as an analysis of a problem that appears across these literatures, not as a claim that any one field lacks the relevant ideas or that this framing supersedes existing approaches.
+This creates a difference between \emph{semantic validity}, \emph{organizational applicability}, \emph{authorization}, and \emph{successful execution}. Semantic validity concerns whether an interpretation is meaningful under a stated model. Applicability asks whether that model and its supporting evidence govern this case, identity, resource, and time. Authorization asks whether the specific action is allowed under applicable constraints and delegated authority. Execution records what occurred, not whether the business outcome was beneficial. A policy engine may evaluate the third question deterministically without independently resolving the first two. Conversely, a neuro-symbolic system can strengthen the first question without becoming the enterprise's authority to approve effects.
 
-The problem is therefore relational and diagnostic. It concerns how an organization can identify disagreement between authorized and observed topology, process and governance, semantic and structural representations, architecture and organizational ownership, or strategic intent and granted autonomy. The framework does not require a single enterprise model. It requires enough linkage and provenance to state which representations were compared, what evidence supports the comparison, and what remains unobserved.
+Cross-layer alignment therefore describes a relation among representations and their evidential connections, not an additional master ontology or a single policy. The architectural problem includes establishing identity across systems, determining which representation is authoritative for a particular attribute, preserving provenance and version, and distinguishing a stated organizational requirement from an observed but potentially unauthorized practice. Reconciliation should be scoped to a delegated action. A complete computational model of the enterprise is neither assumed nor required.
+
+\subsection{Time, uncertainty, and the speed of change}
+Human organizational change often follows committee, process, and release cycles, and a criticism of continuous revalidation is that such context changes slowly. That is only part of the relevant clock. User sessions, workload identities, revocations, resource states, data classifications, service configurations, automated process transitions, and adversarial events can change on software time scales. As agent-created activity becomes more frequent, a system cannot assume that an authorization based on an earlier snapshot remains valid until a person next reviews it. This paper uses a \emph{machine-speed adversarial environment} as a forward-looking threat and design assumption. It does not claim that every attack or organizational attribute is already changing at machine speed.
+
+The consequence is not that every decision must synchronously query every source. Different attributes have different freshness requirements and costs. An organizational owner might be stable for weeks, while revocation or incident quarantine could demand rapid invalidation. Useful designs distinguish evidence age, confidence in its issuer, policy version, expiration, and the operational consequences of relying on stale information. Short-lived grants, event-driven invalidation, local enforcement, and rechecking before consequential effects are plausible mechanisms, but their latency, availability, and safety tradeoffs require evaluation. A check performed before action planning may cease to describe the context at the point of execution; this is a time-of-check-to-time-of-use problem rather than proof that continuous polling will solve every case.
+
+The framework retains three epistemic outcomes: agreement supported by applicable evidence; demonstrated conflict; and unknown or insufficiently trusted evidence. Unknown must not become implicit permission. It may lead to a constrained evidence-gathering step, escalation, or a hold on the consequential action. Determining the correct response is a governance and risk decision, not a choice that an agent should make by inventing a justification.
 
 \subsection{Necessary, supportive, and sufficient conditions}
-Cross-layer alignment may be a supportive condition for reliable delegation in some settings, but it is not presented as sufficient for safety, security, legal compliance, or business performance. An aligned set of representations can still be wrong, stale, manipulated, poorly instrumented, or embedded in a faulty runtime. Conversely, a local task may be useful with shallow context when it is reversible, low impact, stable, and well bounded.
-
-This distinction is important for empirical work. A study should not infer that a failed outcome proves misalignment, because model error, adversarial input, cyberattack, data quality, staffing, tool failure, or policy gaps may be responsible. Nor should a successful outcome prove alignment. The proposed construct is an object for comparison and diagnosis whose usefulness must be established in context.
+Cross-layer alignment may support reliable delegation in some settings but is not sufficient for safety, security, legal compliance, or business performance. An aligned set of representations can still be wrong, stale, compromised, or embedded in an insecure runtime. A low-risk, reversible action may be well governed using a small local contract and conventional authorization. Future studies should not infer alignment from success or misalignment from failure without considering model quality, attack, tooling, staffing, and instrumentation as rival explanations.
 
 \section{Integrative Reference Framework}
-For a bounded delegated action, the framework asks five questions:
+The paper treats four analytical dimensions and one cross-cutting constraint plane as distinct \emph{architectural concerns}, not five sequential computation stages. Their purpose is to make the relevant enterprise facts discoverable and their relationships inspectable. For a bounded delegated action, the concerns ask what entities and restrictions mean; who bears responsibility and valid authority; what the current process permits; how the action relates to business objectives and architectural dependencies; and what governance requires or prohibits.
 
-\begin{enumerate}
-\item Does the semantic foundation represent the entities, states, actions, constraints, and exceptions that matter?
-\item Does the actor topology identify responsibility, authority, delegation, interaction, and organizational or software boundaries?
-\item Does the process representation connect intended steps, observed behavior, handoffs, exceptions, and decision authority?
-\item Do strategic intent and architecture connect the action to objectives, capabilities, owners, dependencies, and risk posture?
-\item Does governance constrain and evidence identity, permission, prohibition, obligation, approval, separation of duties, monitoring, attribution, revocation, interruptibility, and autonomy?
-\end{enumerate}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+layer/.style={draw, rounded corners, align=center, minimum width=0.77\textwidth, minimum height=0.53cm, fill=gray!8},
+gov/.style={draw, dashed, rounded corners, inner sep=7pt}
+]
+\node[layer] (semantic) {Semantic: meaning, provenance, data restrictions};
+\node[layer, below=3pt of semantic] (topology) {Structural: responsibility, identity, delegation};
+\node[layer, below=3pt of topology] (process) {Process: case state, transitions, exceptions};
+\node[layer, below=3pt of process] (strategy) {Strategic: objectives, capabilities, ownership};
+\node[gov, fit=(semantic)(strategy), label={[align=center]above:Governance constrains all four dimensions}] (governance) {};
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (semantic.south) -- (topology.north);
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (topology.south) -- (process.north);
+\draw[{Stealth[length=2mm]}-{Stealth[length=2mm]}] (process.south) -- (strategy.north);
+\end{tikzpicture}
+\caption{Four related organizational representations under cross-cutting governance. Bidirectional connectors indicate dependencies for interpretation and comparison, not a fixed order of execution or a single data pipeline.}
+\label{fig:framework}
+\end{figure}
 
-The framework is a comparison protocol, not a prescribed data architecture. A research or operating team can implement the links through process repositories, policy engines, identity systems, event logs, architecture repositories, knowledge graphs, review records, or a DTO-like substrate. The representation may be distributed and partial. What matters is that provenance, version, scope, and evidence status are visible enough to distinguish agreement, conflict, and unknown.
+\subsection{Context resolution, governed execution, and reconciliation}
+The framework is best understood as a recurring interaction among three responsibilities rather than a mandatory new platform. First, authoritative services establish the evidence relevant to the task: entity and data meaning, initiating principal, accountable owner, currently valid delegation, case state, applicable business purpose, and policy constraints. Evidence from an agent's generated narrative remains a claim until verified against its source and applicability. Second, an independent enforcement boundary determines whether a proposed resource access, delegation, tool call, or information transfer is permitted in that scope. Third, outcome and decision evidence is correlated back to organizational context so that investigation, recovery, and organizational change can occur without treating a successful API response as proof of successful enterprise work.
+
+\begin{center}
+\small
+\fbox{\begin{minipage}{0.89\textwidth}
+\centering
+\textbf{Delegated task and initiating authority}\\
+$\downarrow$\\
+\textbf{Resolve applicable, versioned organizational evidence}\\
+{\footnotesize Semantics \quad Actor topology \quad Process \quad Strategy \quad Governance}\\
+$\downarrow$\\
+\textbf{Agent proposes a bounded step or child-agent delegation}\\
+$\downarrow$\\
+\textbf{Independent context and policy decision at the enforcement boundary}\\
+{\footnotesize Permit within scope \quad Deny \quad Resolve missing evidence \quad Escalate}\\
+$\downarrow$\\
+\textbf{Execute permitted effects, record outcome, and reassess changes}
+\end{minipage}}
+\end{center}
+\noindent\textit{The flow is illustrative. A context-recovery request is not permission to perform the withheld action, and not every low-risk step requires every representation.}
+
+A practical division of responsibility follows. Sources of record establish attributes and their versions; a context resolver associates those attributes with the bounded task; policy and decision services interpret applicable controls; enforcement points mediate actual resource operations; and telemetry links decisions to execution and observed outcomes. An agent may investigate and propose actions, but should not be able to expand its own authority, declare a disputed policy obsolete, or bypass enforcement by selecting another tool. This division is consistent with established Zero Trust and bounded-autonomy work \parencite{nist207a2023,opa2026agent,jorgensen2026governing}. The present paper contributes the enterprise-architecture lens through which their input dependencies and evidence connections can be examined.
+
+\subsection{Multi-level delegated teams}
+Dynamic agent teams make organizational structure an execution-time property. A parent agent may create a specialist sub-agent, which may create another child. At each hop, the useful default is \emph{attenuation}: a child receives a narrower scope tied to an explicit subtask, resource set, permitted operation, duration, and downstream delegation limit. A descendant should not obtain authority merely because the parent can ask it to act. Its effective grant should be constrained by the initiating authority, each prior valid delegation, current organizational policy, and task-specific restrictions. Creating a new child should require an independently authorized delegation decision, and the parent should remain attributable without giving every descendant the parent's unrestricted credentials.
+
+Authority can also be withdrawn. Revocation of an upstream grant, reassignment of the responsible role, expiration of a task, or a change in data constraints can invalidate a descendant's access. The architecture therefore needs lineage across the chain and an enforceable revalidation or revocation mechanism. A static RBAC assignment or a prompt instruction alone is not evidence that the lineage remains valid. A hierarchical tree is an illustrative case; actual multi-agent workflows may be graphs with shared services or joint work, requiring explicit treatment of multiple parents and aggregate authority rather than silently taking their union \parencite{tallam2026authorization}.
+
+\subsection{Scalability and operational boundaries}
+The long-term enterprise design problem is not a fixed roster of a few agents. Systems may eventually coordinate tens or hundreds of thousands of concurrent agent instances across many processes and resource boundaries. Those counts are planning scenarios, not deployment observations demonstrated by this paper; no architecture has literally infinite capacity. At those scales, centrally resolving every attribute for every intermediate step would create unacceptable latency and failure dependencies. Relevant considerations include identity provisioning, short-lived delegated capabilities, distributed enforcement, local policy evaluation, event-driven invalidation, bounded context retrieval, partitioned telemetry, and proportional retention.
+
+Scaling also changes what must be measured. Throughput and policy-decision latency matter, but so do revocation propagation, stale-decision windows, human escalation load, data exposure, provenance completeness, and business outcomes. A design that increases raw agent concurrency while degrading these properties is not necessarily an improvement. Detailed protocols, consistency guarantees, threat analysis, and performance evaluation belong to a separate technical study; this paper establishes why enterprise context must be represented in that study.
+
 
 \section{Alignment Dimensions and Operationalization}
 \subsection{Semantic alignment}
