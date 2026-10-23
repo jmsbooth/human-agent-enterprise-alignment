@@ -25,10 +25,10 @@ Retain Paper 0 as an enterprise-architecture-led conceptual synthesis. Its disti
 
 ## Before marking an archival revision final
 
-- [ ] Compile the **exact** candidate source and regenerate the committed reader PDF.
-- [ ] Verify all bibliography keys and citations; externally check new publication metadata, source status, and consequential claims.
+- [x] Compile the **exact** candidate source and regenerate the reader PDF. See `research/paper-0-build-evidence.md`.
+- [x] Verify all bibliography keys and citation references (57/57 used); externally checked principal new-source metadata. A full 57-source claim-to-paper review remains for independent scholarly QA.
 - [ ] Inspect all PDF pages, including longtables, table continuation headers, figure placement, typographic characters, hyperlinks, and endnotes/references.
-- [ ] Verify readable README links resolve to the same committed PDF content and source revision.
+- [ ] Verify the README resolves to the **branch's** committed 29-page PDF and source revision; stable `main` continues to show the previously published 21-page version until approval.
 - [ ] Conduct author review for substance and voice, paying special attention to Sections 6-11 and the two illustrative cases.
 - [ ] Obtain independent technical or academic review, if desired, before external archival release.
 - [ ] On approval, tag a stable release with a citation file and appropriate licensing; avoid labeling the still-conceptual findings as empirical validation.
