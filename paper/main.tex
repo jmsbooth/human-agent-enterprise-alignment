@@ -370,13 +370,35 @@ ID & Proposition & Evidence category & Boundary condition \\
 P1 & Shared semantic representations can improve factual accuracy, domain consistency, constraint adherence, or traceability for bounded agent tasks relative to otherwise comparable ungrounded conditions. & Strong adjacent; emerging direct & Effects depend on coverage, freshness, retrieval, entity resolution, and task design; semantic grounding does not guarantee truth. \\
 P2 & Better-specified actor topology and bounded authority can improve responsibility clarity and expose or constrain interactions inconsistent with assigned authority. & Emerging direct; strong adjacent & Incident blast radius is a future outcome to test, not an established consequence. Topology variation may be intentional or poorly observed. \\
 P3 & Explicit process representations and event evidence can expose exception, conformance, handoff, and attribution failures that are difficult to see from aggregate task success. & Strong adjacent; emerging direct & Event data omit tacit work and uninstrumented channels; inspectability does not automatically prevent failure. \\
-P4 & Joint consideration of semantic, structural, process, strategic, and governance relations may provide value beyond the isolated contribution of any one dimension for bounded delegated work. & Conceptual / speculative & This is the central integration proposition and the least empirically established. The interaction may be absent, context-dependent, or offset by model and runtime failures. \\
+P4 & For some consequential delegated tasks, connecting semantic, structural, process, strategic, and governance evidence at the runtime boundary may improve decisions beyond isolated local controls. & Conceptual / speculative & Compare against authorization overhead, false holds, and simpler controls that may perform equally well. \\
 P5 & Explicitly representing uncertainty and separating alignment, misalignment, and unknown evidence can improve the quality of autonomy, escalation, and review decisions. & Conceptual / emerging & The representation can add bureaucracy or false confidence; studies must measure decision quality and negative cases. \\
+P6 & Context freshness and revocation propagation become more consequential as automated execution and adversarial changes outpace periodic human review. & Strong adjacent; conceptual transfer & Not all attributes change rapidly. Compare stale-permit windows, availability, and latency under specified workloads. \\
+P7 & Multi-level, task-scoped delegation can constrain descendant authority and exposure relative to unconstrained credential inheritance. & Strong adjacent; emerging direct & Derived grants need independent enforcement, including transfers and changing workflow branches; privilege aggregation remains a challenge. \\
 \bottomrule
 \end{longtable}
 \endgroup
 
 P4 is the central integration proposition, and it remains the least empirically established. An empirical result showing no interaction among dimensions would still be important: it would constrain the value of a cross-layer framework and reveal when local controls are sufficient. Conversely, a positive interaction would need to be separated from confounding improvements in instrumentation, staffing, training, prompting, or review.
+
+\subsection{Enterprise value and its operating costs}
+The potential enterprise benefit is not another governance dashboard. If context and enforcement are reusable across applications and agent frameworks, an organization may be able to delegate a broader range of bounded actions without embedding separate authorization, process interpretation, and review systems within each agent. Better evidence might also reduce investigation effort and expose costly local optimization. These are mechanisms to investigate, not measured returns on investment.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{P{0.28\textwidth} P{0.32\textwidth} P{0.28\textwidth}}
+\toprule
+Potential outcome & Evidence worth comparing & Countervailing cost \\
+\midrule
+Greater appropriate autonomy & Completed cases without inappropriate action or unnecessary escalation & Decision latency, failed legitimate tasks \\
+More accountable execution & Reconstruction of actor, applicable context, approval, and resulting effect & Telemetry volume, privacy and retention burden \\
+Faster recovery after change & Revocation propagation, stale decisions, recovery effort & Cache invalidation, service dependency, availability \\
+Less duplicated integration & Reusable context contracts and policy decisions across workflows & Mapping, ownership, and governance maintenance \\
+\bottomrule
+\end{tabular}
+\caption{Candidate enterprise benefits and costs; none is an established effect of this framework.}
+\end{table}
+
+The design should preserve a low-cost path for narrow, reversible operations where local controls are adequate. Adding cross-layer lookups to every inference step would impose complexity without necessarily adding security or economic value.
 
 \section{Candidate Observables and Optional DTO Substrate}
 Candidate observables are listed to make the synthesis empirically approachable. They are not validated metrics, confidence estimates, governance coverage scores, or a predetermined composite. Researchers should choose measures that fit a bounded task, preregister the comparison, record representation versions, and report missing evidence as unknown where appropriate.
