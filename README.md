@@ -1,6 +1,6 @@
 # Cross-Layer Alignment in the Human-Agent Enterprise
 
-**[Read the full paper (PDF)](paper/cross-layer-alignment.pdf)** | [Download PDF](https://raw.githubusercontent.com/jmsbooth/human-agent-enterprise-alignment/main/paper/cross-layer-alignment.pdf) | [LaTeX source](paper/main.tex)
+**[Read the full paper (PDF)](paper/cross-layer-alignment.pdf)** | [Download PDF](paper/cross-layer-alignment.pdf?raw=1) | [LaTeX source](paper/main.tex)
 
 This repository accompanies a conceptual synthesis and perspective paper on how enterprise meaning, actor responsibility, process behavior, strategic intent, architecture, and governance constraints interact around delegated agent actions.
 
