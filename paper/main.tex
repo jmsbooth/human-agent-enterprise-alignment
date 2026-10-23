@@ -145,24 +145,7 @@ This intersection suggests four analytical dimensions and a cross-cutting govern
 
 The layers should not be collapsed into one ontology, one graph, one process model, or one score. Their value comes from making relationships and disagreements inspectable while preserving the distinct questions each representation answers.
 
-\begin{figure}[t]
-\centering
-\begin{tikzpicture}[
-layer/.style={draw, rounded corners, align=center, minimum width=0.73\textwidth, minimum height=0.55cm, fill=gray!8},
-gov/.style={draw, dashed, rounded corners, inner sep=7pt}
-]
-\node[layer] (semantic) {Semantic foundation: meaning, entities, constraints, provenance};
-\node[layer, below=2pt of semantic] (topology) {Actor topology: responsibility, authority, interaction, boundaries};
-\node[layer, below=2pt of topology] (process) {Process representation: prescription, execution, exceptions, handoffs};
-\node[layer, below=2pt of process] (strategy) {Strategic intent and architecture: objectives, capabilities, ownership};
-\node[gov, fit=(semantic)(strategy), label={[align=center]above:Governance constraint plane}] (governance) {};
-\draw[-{Stealth[length=2mm]}] (semantic.south) -- (topology.north);
-\draw[-{Stealth[length=2mm]}] (topology.south) -- (process.north);
-\draw[-{Stealth[length=2mm]}] (process.south) -- (strategy.north);
-\end{tikzpicture}
-\caption{Reference framework. The four analytical dimensions remain distinct; governance constrains and observes all of them. Cross-layer alignment is examined through relations and evidence, not collapsed into a universal scalar.}
-\label{fig:framework}
-\end{figure}
+
 
 \section{The Remaining Alignment Gap}
 \subsection{From representational agreement to runtime applicability}
